@@ -1,0 +1,42 @@
+<%- include('template.ejs') %>
+<div class="container">
+<div class="row">
+<% arr.forEach((book)=>{%>
+  <div class="col-sm-4" style="margin-top: 20px;">
+  <div class="card" >
+    <img src=<%- book.img %>.jpg class="card-img-top" style="aspect-ratio:1;" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%- book.Title %></h5>
+      <p class="card-text"><i>by <%- book.Author %></i></p>
+      <% if(book.status==0){%>
+      <a href="/borrow/<%-book.Title%>" class="btn btn-primary">Borrow</a>
+      <%}%>
+      <% if(book.status==1){%>
+        <button type="button" class="btn btn-lg btn-secondary" data-bs-toggle="popover" data-bs-title="Error:" data-bs-content="This book cannot be borrowed because it is on loan.">On Loan</button>
+      <%}%>
+    </div>
+  </div>
+  </div>
+<%})%>
+</div>
+</div>
+<%if (session==""){%>
+  <script>
+    const logout=document.querySelector("#logout")
+    logout.setAttribute('hidden','hidden')
+  </script>
+<%}else{%>
+  <script>
+    const login=document.querySelector("#login")
+    login.setAttribute('hidden','hidden')
+    const p=document.querySelector("#i")
+    p.innerHTML=<%- session%>
+  </script>
+<%}%>
+<script type="text/javascript">
+  const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+  const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new
+  bootstrap.Popover(popoverTriggerEl))
+</script>
+</body>
+</html>

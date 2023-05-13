@@ -1,0 +1,12 @@
+<%- include('template.ejs')%>
+    <div class="alert alert-success" role="alert" style="margin-top: 10%;margin-left:28%;width: 50%;display: flex;justify-content: center;">
+      Books <%- message%> successfully.
+    </div>
+</body>
+<script>
+    const login=document.querySelector("#login")
+    login.setAttribute('hidden','hidden')
+    const p=document.querySelector("#i")
+    p.innerHTML=<%- session%>
+</script>
+</html>

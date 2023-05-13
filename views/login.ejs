@@ -1,0 +1,19 @@
+<%- include('template.ejs') %>
+<link rel="stylesheet" href="/css/login.css">
+  <div class="container">
+    <form action="/login" method="post">
+      <label for="cardnumber">
+        <h4>Card Number:</h4>
+      </label><br><br>
+    <input type="number" name="cardNumber" max="9999"><br><br>
+    <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+  <%if (true){%>
+    <script>
+      const logout=document.querySelector("#logout")
+      logout.setAttribute('hidden','hidden')
+    </script>
+  <%}%> 
+</body>
+</html>

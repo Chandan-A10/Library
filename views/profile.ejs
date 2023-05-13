@@ -1,0 +1,30 @@
+<%- include('template.ejs') %>
+<% if(record==""){%>
+    <div class="alert alert-dark" role="alert">You currently have no borrowed books</div>
+<% }else{
+    record.forEach((book)=>{%>
+        <div class="card mb-3" style="max-width: 100%;margin-top: 20px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="<%- book.img%>.jpg" class="img-fluid rounded-start col-md-6"  alt="...">
+          </div>
+          <div class="col-md-8">
+          <div class="card-body">
+          <h5 class="card-title"><%- book.Title %></h5>
+          <p class="card-text"><%- book.desc %></p>
+          <p class="card-text"><small class="text-body-secondary"><%- book.Author %></small></p>
+          <a href="/return/<%- book.Title %>" class="btn btn-danger">Return</a>
+          </div>
+          </div>
+        </div>
+    </div>
+    <%})%>
+<%} %>
+<script type="application/javascript">
+  const login=document.querySelector("#login")
+  login.setAttribute('hidden','hidden')
+  const p=document.querySelector("#i")
+  p.innerHTML=<%- session%>
+</script>
+</body>
+</html>
